@@ -1,17 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Button } from 'antd'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom"
+
+import { ConfigProvider, App as AntdApp } from 'antd'
+import { locale, routes } from './config'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const router = createBrowserRouter(routes)
   return (
-    <>
-      <Button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </Button>
-    </>
+    <ConfigProvider locale={locale}>
+      <AntdApp>
+        <RouterProvider router={router} />
+      </AntdApp>
+    </ConfigProvider>
   )
 }
 
