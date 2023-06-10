@@ -7,6 +7,8 @@ import Layout from './Layout'
 import ErrorBoundary from './ErrorBoundary'
 
 import Home from './pages/Home.jsx'
+import About from './pages/About.jsx'
+import Test from './pages/Test.jsx'
 
 export const routes = [
   {
@@ -18,6 +20,14 @@ export const routes = [
         path: '/',
         element: <Home />,
       },
+      {
+        path: '/about',
+        element: <About />,
+      },
+      {
+        path: '/test',
+        element: <Test />,
+      },
     ],
   },
 ]
@@ -27,21 +37,18 @@ export const title = 'Github'
 export const subTitle = '全球最大的代码托管平台'
 
 export const menu = {
-  theme: 'light',
-  mode: 'inline',
-  defaultSelectedKeys: ['1'],
   items: [
     {
-      key: '1',
-      label: 'nav 1',
+      key: '/',
+      label: 'Home',
     },
     {
-      key: '2',
-      label: 'nav 2',
+      key: '/about',
+      label: 'About',
     },
     {
-      key: '3',
-      label: 'nav 3',
+      key: '/test',
+      label: 'Test',
     },
   ],
 }

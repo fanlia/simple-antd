@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -11,10 +11,16 @@ const { Header, Footer, Sider, Content } = Layout
 import { logo, title, menu } from './config'
 
 export default function MyLayout () {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
   } = theme.useToken()
+
+  const handleMenuClick = (e) => {
+    navigate(e.key)
+  }
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -38,7 +44,13 @@ export default function MyLayout () {
           <img src={logo} alt={title} />
           { !collapsed && <span>{title}</span> }
         </Space> 
-        <Menu { ...menu} />
+        <Menu
+          theme='light'
+          mode='inline'
+          defaultSelectedKeys={[ location.pathname ]}
+          onClick={handleMenuClick}
+          { ...menu}
+        />
       </Sider>
       <Layout>
         <Header
