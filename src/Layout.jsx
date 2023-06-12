@@ -1,22 +1,43 @@
 
 import { useState } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, Navigate } from 'react-router-dom'
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  UserOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons'
-import { Button, Space, Menu, Layout, theme } from 'antd'
+import { Avatar, Dropdown, Button, Space, Menu, Layout, theme } from 'antd'
 const { Header, Footer, Sider, Content } = Layout
 
+import Loading from './Loading'
+import { useAuth } from './services/login'
 import { logo, title, menu } from './config'
 
 export default function MyLayout () {
   const location = useLocation()
   const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState(false);
+  const auth = useAuth()
   const {
     token: { colorBgContainer },
   } = theme.useToken()
+
+  if (auth.status === 'checking') return <Loading />
+  if (auth.status === 'unchecked') {
+    const from = encodeURIComponent(location.pathname + location.search)
+    const to = `/login?redirect=${from}`
+    return <Navigate to={to} />
+  }
+
+  const user = auth.auth.getUser()
+
+  const handleAvatar = async ({ key }) => {
+    if (key === 'logout') {
+      await auth.auth.logout()
+      navigate('/login')
+    }
+  }
 
   const handleMenuClick = (e) => {
     navigate(e.key)
@@ -57,6 +78,8 @@ export default function MyLayout () {
           style={{
             padding: 0,
             background: colorBgContainer,
+            display: 'flex',
+            justifyContent: 'space-between',
           }}
         >
           <Button
@@ -69,6 +92,30 @@ export default function MyLayout () {
               height: 64,
             }}
           />
+          { user && <Dropdown
+            menu={{
+              items: [
+                {
+                  key: 'logout',
+                  icon: <LogoutOutlined />,
+                  label: '退出登录',
+                },
+              ],
+              onClick: handleAvatar,
+            }}
+          >
+            <Space
+              style={{
+                marginRight: 24,
+              }}
+            >
+              <Avatar
+                src={user.avatar}
+                icon={!user.avatar && <UserOutlined />}
+              />
+              <span>{user.username}</span>
+            </Space>
+          </Dropdown>}
         </Header>
         <Content
           style={{

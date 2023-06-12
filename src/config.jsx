@@ -6,11 +6,16 @@ export const locale = zhCN
 import Layout from './Layout'
 import ErrorBoundary from './ErrorBoundary'
 
+import Login from './pages/Login.jsx'
 import Home from './pages/Home.jsx'
 import About from './pages/About.jsx'
 import Test from './pages/Test.jsx'
 
 export const routes = [
+  {
+    path: '/login',
+    element: <Login />,
+  },
   {
     path: "/",
     element: <Layout />,
