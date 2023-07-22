@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react'
 import { Table, Divider, Button, Space } from 'antd'
 import * as XLSX from 'xlsx'
 
+import SecondButton from './SecondButton'
+
 const downloadXLSX = (list, filename) => {
   const workbook = XLSX.utils.book_new()
   const worksheet = XLSX.utils.json_to_sheet(list, {
@@ -84,6 +86,10 @@ export default ({ config }) => {
     requestData()
   }
 
+  const onTickEnd = () => {
+    requestData()
+  }
+
   const columns = [
     {
       title: '时间',
@@ -106,6 +112,7 @@ export default ({ config }) => {
       <Space>
         <Button onClick={handleDownload}>下载</Button>
         <Button onClick={handleReload}>刷新</Button>
+        <SecondButton onTickEnd={onTickEnd} />
       </Space>
     </div>
     <Table dataSource={data.list} columns={columns} rowKey='url' size='small' loading={loading}/>
