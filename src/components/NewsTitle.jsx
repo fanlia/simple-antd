@@ -11,7 +11,8 @@ const downloadXLSX = (list, filename) => {
     skipHeader: true,
   })
   XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1')
-  XLSX.writeFile(workbook, filename + '.xlsx')
+  const date = new Date().toISOString().replace(/\.\d+Z/, '').replace('T', ' ')
+  XLSX.writeFile(workbook, `${filename} ${date}.xlsx`)
 }
 
 const fetchData = (variables) => {
