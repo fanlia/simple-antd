@@ -86,16 +86,16 @@ export default ({ config }) => {
 
   const columns = [
     {
-      title: '标题',
-      dataIndex: 'title',
-      key: 'title',
-      render: (title, d) => <a href={d.url} target='_blank'>{title}</a>
-    },
-    {
       title: '时间',
       dataIndex: 'date',
       key: 'date',
       width: 150,
+    },
+    {
+      title: '标题',
+      dataIndex: 'title',
+      key: 'title',
+      render: (title, d) => <a href={d.url} target='_blank'>{title}</a>
     },
   ]
 
