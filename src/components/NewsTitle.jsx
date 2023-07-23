@@ -6,7 +6,7 @@ import { downloadXLSX } from '../services/xlsx.js'
 import SecondButton from './SecondButton'
 
 const fetchData = (variables) => {
-  const url = 'http://localhost:4000'
+  const url = import.meta.env.VITE_API || 'http://localhost:4000'
 
   const query = `
   query(
