@@ -4,10 +4,12 @@ import { UploadOutlined, DownloadOutlined } from '@ant-design/icons'
 import { Button, message, Upload, Space, Table, Divider, Tag } from 'antd'
 
 import * as storage from '../services/storage'
+import * as xlsx from '../services/xlsx'
 
 export default () => {
 
   const [sites, setSites] = useState([])
+  const [file, setFile] = useState(null)
 
   useEffect(() => {
     const data = storage.get('sites')
@@ -16,12 +18,15 @@ export default () => {
     }
   }, [])
 
-  const handleImport = (e) => {
-
+  const handleImport = async (e) => {
+    if (!e.file) return
+    const data = await xlsx.readFile(e.file)
+    storage.set('sites', data)
+    setSites(data)
   }
 
-  const handleExport = (e) => {
-
+  const handleExport = () => {
+    xlsx.downloadXLSX(sites, '站点信息')
   }
 
   const handleDisabled = (page, disabled) => {
@@ -37,7 +42,7 @@ export default () => {
       title: '网址',
       dataIndex: 'page',
       key: 'page',
-      render: (page, d) => <a href={page} target='_blank'>{page}</a>
+      render: (page, d) => <a href={page} target='_blank'>{d.name || page}</a>
     },
     {
       title: '是否启用',
@@ -59,9 +64,8 @@ export default () => {
 
   return (
     <div>
-      <h1>Test</h1>
       <Space>
-        <Upload onChange={handleImport}>
+        <Upload onChange={handleImport} beforeUpload={() => false}>
           <Button icon={<UploadOutlined />}>上传站点文件</Button>
         </Upload>
         <Button icon={<DownloadOutlined />} onClick={handleExport}>下载站点文件</Button>

@@ -45,15 +45,15 @@ export const menu = {
   items: [
     {
       key: '/',
-      label: 'Home',
+      label: '数据',
     },
-    {
-      key: '/about',
-      label: 'About',
-    },
+    // {
+    //   key: '/about',
+    //   label: 'About',
+    // },
     {
       key: '/test',
-      label: 'Test',
+      label: '站点',
     },
   ],
 }
