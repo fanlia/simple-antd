@@ -1,19 +1,9 @@
 
 import { useState, useEffect } from 'react'
 import { Table, Divider, Button, Space } from 'antd'
-import * as XLSX from 'xlsx'
 
+import { downloadXLSX } from '../services/xlsx.js'
 import SecondButton from './SecondButton'
-
-const downloadXLSX = (list, filename) => {
-  const workbook = XLSX.utils.book_new()
-  const worksheet = XLSX.utils.json_to_sheet(list, {
-    skipHeader: true,
-  })
-  XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1')
-  const date = new Date().toISOString().replace(/\.\d+Z/, '').replace('T', ' ')
-  XLSX.writeFile(workbook, `${filename} ${date}.xlsx`)
-}
 
 const fetchData = (variables) => {
   const url = 'http://localhost:4000'
@@ -51,7 +41,7 @@ const fetchData = (variables) => {
 
 }
 
-export default ({ config, keyword }) => {
+export default ({ config, keyword, onData }) => {
 
   const [data, setData] = useState({
     title: '',
@@ -68,6 +58,7 @@ export default ({ config, keyword }) => {
     .then((res) => {
       if (res.data.page) {
         setData(res.data.page)
+        onData(res.data.page)
       } else {
         console.log('error', res.data)
       }
@@ -81,7 +72,7 @@ export default ({ config, keyword }) => {
 
   const handleDownload = () => {
     const list  = data.list.filter(d => d.title.includes(keyword))
-    downloadXLSX(list, data.site, keyword)
+    downloadXLSX(list, data.site)
   }
 
   const handleReload = () => {
