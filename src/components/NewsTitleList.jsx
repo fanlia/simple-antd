@@ -27,7 +27,7 @@ export default ({ configs }) => {
         <Radio.Button value="8">3列</Radio.Button>
         <Radio.Button value="6">4列</Radio.Button>
       </Radio.Group>
-      <Input addonBefore={<SearchOutlined />} placeholder="关键字" onChange={handleKeyword} />
+      <Input addonBefore={<SearchOutlined />} allowClear placeholder="关键字" onChange={handleKeyword} />
     </Space>
     <Row gutter={[16, 16]}>
       {configs.map((d, i) => <Col span={span} key={i}><NewsTitle config={d} keyword={keyword}/></Col>)}
