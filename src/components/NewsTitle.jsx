@@ -51,7 +51,7 @@ const fetchData = (variables) => {
 
 }
 
-export default ({ config }) => {
+export default ({ config, keyword }) => {
 
   const [data, setData] = useState({
     title: '',
@@ -80,7 +80,8 @@ export default ({ config }) => {
   }, [])
 
   const handleDownload = () => {
-    downloadXLSX(data.list, data.site)
+    const list  = data.list.filter(d => d.title.includes(keyword))
+    downloadXLSX(list, data.site, keyword)
   }
 
   const handleReload = () => {
@@ -116,7 +117,7 @@ export default ({ config }) => {
         <SecondButton onTickEnd={onTickEnd} />
       </Space>
     </div>
-    <Table dataSource={data.list} columns={columns} rowKey='url' size='small' loading={loading}/>
+    <Table dataSource={data.list.filter(d => d.title.includes(keyword))} columns={columns} rowKey='url' size='small' loading={loading}/>
     </>
   )
 }
