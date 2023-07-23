@@ -60,7 +60,7 @@ export default ({ config, keyword, onData }) => {
         setData(res.data.page)
         onData(res.data.page)
       } else {
-        console.log('error', res.data)
+        console.log('error', res)
       }
       setLoading(false)
     })
