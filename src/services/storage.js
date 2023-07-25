@@ -3,6 +3,14 @@ import CryptoJS from 'crypto-js'
 
 const SITES = [
   {
+    page: 'http://paper.people.com.cn/rmrb/paperindex.htm',
+    site: 'head title',
+    out_date: '.date',
+    list: '.news-list li',
+    title: 'a',
+    url: 'a',
+  },
+  {
     page: 'https://www.zhjtjt.com/Project/Default.aspx?i=3&j=0',
     site: 'head title',
     list: '.safetylist li',

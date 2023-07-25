@@ -8,19 +8,24 @@ import SecondButton from './SecondButton'
 const fetchData = (variables) => {
   const url = import.meta.env.VITE_API || 'http://localhost:4000'
 
+  const [$date, date] = variables.date ? [`$date: String!`, `date:date(selector: $date, from: "YYYY MM DD")`] : ['', '']
+  const [$out_date, out_date] = variables.out_date ? [`$out_date: String!`, `date:date(selector: $out_date, from: "YYYY MM DD")`] : ['', '']
+
   const query = `
   query(
     $page: JSON!
     $site: String!
     $list: String!
-    $date: String!
+    ${$date}
+    ${$out_date}
     $title: String!
     $url: String!
   ) {
     page(url: $page) {
       site:text(selector: $site)
+      ${out_date}
       list:children(selector: $list) {
-        date:date(selector: $date, from: "YYYY MM DD")
+        ${date}
         title:text(selector: $title)
         url:url(selector: $url)
       }
@@ -56,9 +61,11 @@ export default ({ config, keyword, onData }) => {
     setLoading(true)
     fetchData(config)
     .then((res) => {
-      if (res.data.page) {
-        setData(res.data.page)
-        onData(res.data.page)
+      const page = res.data.page
+      if (page) {
+        page.list = page.list.map(d => ({ date: page.date || d.date, ...d, site: page.site }))
+        setData(page)
+        onData(page)
       } else {
         console.log('error', res)
       }
