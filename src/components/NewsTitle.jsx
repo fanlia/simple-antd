@@ -4,6 +4,7 @@ import { Table, Divider, Button, Space } from 'antd'
 
 import { downloadXLSX } from '../services/xlsx.js'
 import SecondButton from './SecondButton'
+import KeywordTitle from './KeywordTitle'
 
 const fetchData = (variables) => {
   const url = import.meta.env.VITE_API || 'http://localhost:4000'
@@ -101,7 +102,7 @@ export default ({ config, keyword, onData }) => {
       title: '标题',
       dataIndex: 'title',
       key: 'title',
-      render: (title, d) => <a href={d.url} target='_blank'>{title}</a>
+      render: (title, d) => <a href={d.url} target='_blank'><KeywordTitle title={title} keyword={keyword}/></a>
     },
   ]
 

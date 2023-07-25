@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react'
-import { Button, DatePicker, Space, Result } from 'antd'
+import { Button, DatePicker, Space, Result, Spin } from 'antd'
 import { Link } from 'react-router-dom'
 
 import NewsTitleList from '../components/NewsTitleList'
@@ -8,18 +8,22 @@ import * as storage from '../services/storage'
 
 export default () => {
   const [sites, setSites] = useState([])
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     const data = storage.get('sites')
     if (data) {
       setSites(data.filter(d => !d.disabled))
     }
+    setLoaded(true)
   }, [])
 
   return (
     <div>
       {
-        sites.length > 0
+      !loaded
+      ? <Spin />
+      :  sites.length > 0
           ? <NewsTitleList configs={sites} />
           : <Result
               status="warning"
