@@ -19,8 +19,8 @@ const fetchData = (variables) => {
     $list: String!
     ${$date}
     ${$out_date}
-    $title: String!
-    $url: String!
+    $title: String
+    $url: String
     $href: String
   ) {
     page(url: $page) {
@@ -66,7 +66,7 @@ export default ({ config, keyword, onData }) => {
     .then((res) => {
       const page = res.data.page
       if (page) {
-        page.site = page.site || config.name
+        page.site = config.name || page.site
         page.list = page.list.map(d => ({ date: page.date || d.date || page.now, ...d, site: page.site }))
         setData(page)
         onData(page)

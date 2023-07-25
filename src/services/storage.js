@@ -19,6 +19,29 @@ const SITES = [
     href: 'data-href',
     name: '北京日报',
   },
+  {
+    page: 'http://epaper.tianjinwe.com/tjrb/',
+    site: 'head title',
+    out_date: 'span.default strong',
+    list: 'div#btdh td.black',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://paper.xinmin.cn/index/xmwb/index.html',
+    site: 'head title',
+    out_date: '.dzb-date-wrap',
+    list: '.dzb-enter-nav-benban-wrap a',
+    name: '新民晚报'
+  },
+  {
+    page: 'https://app.cqrb.cn/www/cqnews/index.html',
+    site: 'head title',
+    list: 'div#newslist h3.mxzxItem',
+    date: 'span',
+    title: 'a',
+    url: 'a',
+  },
   // {
   //   page: 'https://www.zhjtjt.com/Project/Default.aspx?i=3&j=0',
   //   site: 'head title',
