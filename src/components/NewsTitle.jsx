@@ -21,14 +21,16 @@ const fetchData = (variables) => {
     ${$out_date}
     $title: String!
     $url: String!
+    $href: String
   ) {
     page(url: $page) {
       site:text(selector: $site)
+      now
       ${out_date}
       list:children(selector: $list) {
         ${date}
         title:text(selector: $title)
-        url:url(selector: $url)
+        url:url(selector: $url, name: $href)
       }
     }
   }
@@ -64,7 +66,8 @@ export default ({ config, keyword, onData }) => {
     .then((res) => {
       const page = res.data.page
       if (page) {
-        page.list = page.list.map(d => ({ date: page.date || d.date, ...d, site: page.site }))
+        page.site = page.site || config.name
+        page.list = page.list.map(d => ({ date: page.date || d.date || page.now, ...d, site: page.site }))
         setData(page)
         onData(page)
       } else {
