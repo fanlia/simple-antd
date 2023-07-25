@@ -20,7 +20,7 @@ const fetchData = (variables) => {
     page(url: $page) {
       site:text(selector: $site)
       list:children(selector: $list) {
-        date:text(selector: $date)
+        date:date(selector: $date, from: "YYYY MM DD")
         title:text(selector: $title)
         url:url(selector: $url)
       }
