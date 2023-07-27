@@ -1,6 +1,14 @@
 
 export const SITES = [
   {
+    page: 'https://xjrb.ts.cn/pindex?pName=xjrb',
+    site: 'head title',
+    list: '#articel_content li',
+    title: 'a',
+    url: 'a',
+    href: 'url',
+  },
+  {
     page: 'https://szb.northnews.cn/nmgrb/paperindex.htm',
     site: 'head title',
     out_date: '#banner_top_date',
