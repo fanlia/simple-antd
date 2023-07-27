@@ -1,6 +1,15 @@
 
 export const SITES = [
   {
+    page: 'https://szb.gansudaily.com.cn/gsrb/pc/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '.news-list li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'https://epaper.tibet3.com/qhrb/',
     site: 'head title',
     out_date: '.date',
