@@ -1,6 +1,23 @@
 
 export const SITES = [
   {
+    page: 'https://szb.northnews.cn/nmgrb/paperindex.htm',
+    site: 'head title',
+    out_date: '#banner_top_date',
+    list: '#main-ed-articlenav-list .default',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://epaper.lnd.com.cn/lnrbepaper/pc/layout/index.html',
+    site: 'head title',
+    out_date: '.newstime',
+    list: '.newslist li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'http://jlrbszb.dajilin.com/pc/paper/layout/index.html',
     site: 'head title',
     out_date: '#paperdate',
