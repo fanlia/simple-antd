@@ -1,6 +1,15 @@
 
 export const SITES = [
   {
+    page: 'http://lasa-eveningnews.com.cn/lsrb/pc/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '#articlelist li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'https://xjrb.ts.cn/pindex?pName=xjrb',
     site: 'head title',
     list: '#articel_content li',
