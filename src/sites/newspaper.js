@@ -1,6 +1,14 @@
 
 export const SITES = [
   {
+    page: 'https://epaper.tibet3.com/qhrb/',
+    site: 'head title',
+    out_date: '.date',
+    list: '.artile-list li',
+    title: 'a',
+    url: 'a',
+  },
+  {
     page: 'http://lasa-eveningnews.com.cn/lsrb/pc/layout/index.html',
     site: 'head title',
     out_date: '#paperdate',
