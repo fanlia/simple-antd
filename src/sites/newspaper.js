@@ -1,6 +1,15 @@
 
 export const SITES = [
   {
+    page: 'http://jlrbszb.dajilin.com/pc/paper/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '#articlelist li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'http://epaper.hljnews.cn/hljrb/pc/layout/index.html',
     site: 'head title',
     out_date: '.newstime',
