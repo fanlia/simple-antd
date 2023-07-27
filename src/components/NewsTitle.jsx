@@ -9,6 +9,8 @@ import KeywordTitle from './KeywordTitle'
 const fetchData = (variables) => {
   const url = import.meta.env.VITE_API || 'http://localhost:4000'
 
+  const [$deep_page, deep_page_start, deep_page_end] = variables.deep_page ? ['$deep_page: String!', 'deep_page:page(selector: $deep_page) {', `}`] : ['', '', '']
+
   const [$date, date] = variables.date ? [`$date: String!`, `date:date(selector: $date, from: "YYYY MM DD")`] : ['', '']
   const [$out_date, out_date] = variables.out_date ? [`$out_date: String!`, `date:date(selector: $out_date, from: "YYYY MM DD")`] : ['', '']
 
@@ -17,6 +19,7 @@ const fetchData = (variables) => {
     $page: JSON!
     $site: String!
     $list: String!
+    ${$deep_page}
     ${$date}
     ${$out_date}
     $title: String
@@ -24,6 +27,7 @@ const fetchData = (variables) => {
     $href: String
   ) {
     page(url: $page) {
+      ${deep_page_start}
       site:text(selector: $site)
       now
       ${out_date}
@@ -32,6 +36,7 @@ const fetchData = (variables) => {
         title:text(selector: $title)
         url:url(selector: $url, name: $href)
       }
+      ${deep_page_end}
     }
   }
   `
@@ -64,8 +69,11 @@ export default ({ config, keyword, onData }) => {
     setLoading(true)
     fetchData(config)
     .then((res) => {
-      const page = res.data.page
+      let page = res.data.page
       if (page) {
+        if (page.deep_page) {
+          page = page.deep_page
+        }
         page.site = config.name || page.site
         page.list = page.list.map(d => ({ date: page.date || d.date || page.now, ...d, site: page.site }))
         setData(page)
