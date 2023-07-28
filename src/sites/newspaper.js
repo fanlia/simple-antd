@@ -1,6 +1,64 @@
 
 export const SITES = [
   {
+    page: 'https://zjrb.zjol.com.cn/',
+    site: 'head title',
+    out_date: '.main-ednav-date',
+    list: '.main-ed-articlenav-list li',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'http://xh.xhby.net/pc/layout/index.html',
+    site: 'head title',
+    out_date: '.newstime',
+    list: '.newslist li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'http://paper.dzwww.com/dzrb/content/PageArticleIndex.htm',
+    site: 'head title',
+    out_date: '.B1[width=50%]',
+    list: '#partTitleDiv1 td.td_line',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://hbrb.hebnews.cn/pc/paper/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '#articlelist li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'http://epaper.sxrb.com/index.shtml',
+    site: 'head title',
+    out_date: '.today',
+    list: '.conMItemList li',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://esb.sxdaily.com.cn/pc/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '.bmdh_con a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'https://szb.nxrb.cn/nxrb/pc/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '.news-list li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'https://szb.gansudaily.com.cn/gsrb/pc/layout/index.html',
     site: 'head title',
     out_date: '#paperdate',
