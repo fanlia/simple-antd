@@ -1,6 +1,39 @@
 
 export const SITES = [
   {
+    page: 'https://epaper.scdaily.cn/',
+    site: 'head title',
+    list: '.main_r ul:nth-child(3) p',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://epaper.hubeidaily.net/pc/column/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '.news-list li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'http://newpaper.dahe.cn/hnrb/paperindex.htm',
+    site: 'head title',
+    out_date: 'div.dSearch strong',
+    list: '.dNav + table td.default:odd',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://szb.ahnews.com.cn/ahrb/layout/index.html',
+    site: 'head title',
+    out_date: '.newstime',
+    list: '.newslist li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'https://zjrb.zjol.com.cn/',
     site: 'head title',
     out_date: '.main-ednav-date',
