@@ -1,6 +1,57 @@
 
 export const SITES = [
   {
+    page: 'https://epaper.southcn.com/nfdaily/html/index.html',
+    site: 'head title',
+    out_date: '.today',
+    list: '#artPList1 li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'https://ssw.gxrb.com.cn/json/interface/epaper/api.php?name=gxrb',
+    site: 'head title',
+    out_date: '.m-nav .l1',
+    list: 'dl#001 h3',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://epaper.voc.com.cn/hnrb/paperindex.htm',
+    site: 'head title',
+    out_date: 'span.default',
+    list: '.ul02_l li',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'http://hnrb.hinews.cn/paperindex.htm',
+    site: 'head title',
+    out_date: 'span.default',
+    list: 'div[id^=content]',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'http://szb.gzrbs.com.cn/pc/layout/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '.news-list li',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'https://yndaily.yunnan.cn/',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '#main-ed-articlenav-list .default',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
     page: 'https://epaper.scdaily.cn/',
     site: 'head title',
     list: '.main_r ul:nth-child(3) p',
