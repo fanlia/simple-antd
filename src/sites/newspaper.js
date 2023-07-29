@@ -1,6 +1,22 @@
 
 export const SITES = [
   {
+    page: 'https://fjrb.fjdaily.com/pc/col/index.html',
+    site: 'head title',
+    out_date: '#paperdate',
+    list: '#main-ed-articlenav-list .default',
+    title: 'a',
+    url: 'a',
+    deep_page: '#list li:first a'
+  },
+  {
+    page: 'https://jxrb.jxwmw.cn/',
+    site: 'head title',
+    list: 'table table[width="99%"] table[width="100%"] td:nth-child(even)',
+    title: 'a',
+    url: 'a',
+  },
+  {
     page: 'https://epaper.southcn.com/nfdaily/html/index.html',
     site: 'head title',
     out_date: '.today',
@@ -211,44 +227,46 @@ export const SITES = [
     url: 'a',
     deep_page: '#list li:first a'
   },
-  // {
-  //   page: 'http://paper.people.com.cn/rmrb/paperindex.htm',
-  //   site: 'head title',
-  //   out_date: '.date',
-  //   list: '.news-list li',
-  //   title: 'a',
-  //   url: 'a',
-  // },
-  // {
-  //   page: 'https://bjrbdzb.bjd.com.cn/bjrb/paperindex.htm',
-  //   site: 'head title',
-  //   list: '.nav-list-group li',
-  //   title: 'a',
-  //   url: 'a',
-  //   href: 'data-href',
-  //   name: '北京日报',
-  // },
-  // {
-  //   page: 'http://epaper.tianjinwe.com/tjrb/',
-  //   site: 'head title',
-  //   out_date: 'span.default strong',
-  //   list: 'div#btdh td.black',
-  //   title: 'a',
-  //   url: 'a',
-  // },
-  // {
-  //   page: 'https://paper.xinmin.cn/index/xmwb/index.html',
-  //   site: 'head title',
-  //   out_date: '.dzb-date-wrap',
-  //   list: '.dzb-enter-nav-benban-wrap a',
-  //   name: '新民晚报'
-  // },
-  // {
-  //   page: 'https://app.cqrb.cn/www/cqnews/index.html',
-  //   site: 'head title',
-  //   list: 'div#newslist h3.mxzxItem',
-  //   date: 'span',
-  //   title: 'a',
-  //   url: 'a',
-  // },
+  {
+    page: 'http://paper.people.com.cn/rmrb/paperindex.htm',
+    site: 'head title',
+    out_date: '.date',
+    list: '.news-list li',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://bjrbdzb.bjd.com.cn/bjrb/paperindex.htm',
+    site: 'head title',
+    list: '.nav-list-group li',
+    title: 'a',
+    url: 'a',
+    href: 'data-href',
+    name: '北京日报',
+  },
+  {
+    page: 'http://epaper.tianjinwe.com/tjrb/',
+    site: 'head title',
+    out_date: 'span.default strong',
+    list: 'div#btdh td.black',
+    title: 'a',
+    url: 'a',
+  },
+  {
+    page: 'https://paper.xinmin.cn/index/xmwb/index.html',
+    site: 'head title',
+    out_date: '.dzb-date-wrap',
+    list: '.dzb-enter-nav-benban-wrap a',
+    name: '新民晚报'
+  },
+  {
+    page: 'https://app.cqrb.cn/www/cqnews/index.html',
+    site: 'head title',
+    list: 'div#newslist h3.mxzxItem',
+    date: 'span',
+    title: 'a',
+    url: 'a',
+  },
 ]
+
+console.log(SITES.length)
