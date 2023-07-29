@@ -10,10 +10,9 @@ export const SITES = [
     deep_page: '#list li:first a'
   },
   {
-    page: 'https://epaper.jxnews.com.cn/jxrb/',
+    page: 'https://jxrb.jxwmw.cn/',
     site: 'head title',
-    out_date: 'td.default strong',
-    list: 'table table table:nth-child(3) td.default:odd',
+    list: 'table table[width="99%"] table[width="100%"]:eq(0) td:nth-child(even)',
     title: 'a',
     url: 'a',
   },
