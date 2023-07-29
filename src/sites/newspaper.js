@@ -10,9 +10,10 @@ export const SITES = [
     deep_page: '#list li:first a'
   },
   {
-    page: 'https://jxrb.jxwmw.cn/',
+    page: 'https://epaper.jxnews.com.cn/jxrb/',
     site: 'head title',
-    list: 'table table[width="99%"] table[width="100%"] td:nth-child(even)',
+    out_date: 'td.default strong',
+    list: 'table table table:nth-child(3) td.default:odd',
     title: 'a',
     url: 'a',
   },
@@ -260,10 +261,10 @@ export const SITES = [
     name: '新民晚报'
   },
   {
-    page: 'https://app.cqrb.cn/www/cqnews/index.html',
+    page: 'https://epaper.cqrb.cn/cqrb/',
     site: 'head title',
-    list: 'div#newslist h3.mxzxItem',
-    date: 'span',
+    out_date: 'td.default strong',
+    list: 'table#001 td:odd',
     title: 'a',
     url: 'a',
   },
