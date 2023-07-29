@@ -239,7 +239,7 @@ export const SITES = [
   {
     page: 'https://bjrbdzb.bjd.com.cn/bjrb/paperindex.htm',
     site: 'head title',
-    list: '.nav-list-group li',
+    list: '.nav-list-group:first li',
     title: 'a',
     url: 'a',
     href: 'data-href',
