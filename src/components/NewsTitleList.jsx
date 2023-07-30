@@ -27,7 +27,7 @@ export default ({ configs }) => {
   }
 
   const onData = (data) => {
-    setDatas(datas => [...datas, data])
+    setDatas(datas => [...datas.filter(d => d.site !== data.site), data])
   }
 
   return (
