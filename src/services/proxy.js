@@ -5,9 +5,11 @@ export const testProxy = (proxy) => {
   const query = `
   query(
     $url: JSON!
+    $proxy: JSON!
   ) {
     page(
       url: $url
+      proxy: $proxy
     ) {
       text(selector: "head title")
     }
@@ -15,10 +17,8 @@ export const testProxy = (proxy) => {
   `
 
   const variables = {
-    url: {
-      url: 'http://www.baidu.com',
-      proxy,
-    },
+    url: 'http://www.baidu.com',
+    proxy,
   }
 
   return fetch(url, {

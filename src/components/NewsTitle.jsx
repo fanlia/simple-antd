@@ -17,6 +17,7 @@ const fetchData = (variables) => {
   const query = `
   query(
     $page: JSON!
+    $proxy: JSON
     $site: String!
     $list: String!
     ${$deep_page}
@@ -26,7 +27,7 @@ const fetchData = (variables) => {
     $url: String
     $href: String
   ) {
-    page(url: $page) {
+    page(url: $page proxy: $proxy) {
       ${deep_page_start}
       site:text(selector: $site)
       now
@@ -69,10 +70,7 @@ export default ({ config, keyword, onData, proxy }) => {
     if (proxy) {
       config = {
         ...config,
-        page: {
-          url: config.page,
-          proxy,
-        }
+        proxy,
       }
     }
 
