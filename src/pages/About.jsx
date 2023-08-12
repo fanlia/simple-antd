@@ -35,7 +35,7 @@ export default () => {
     }
 
     const res = await sendMail(variables)
-    if (res.send_mail) {
+    if (res.data.send_mail) {
       message.success('测试邮件发送成功')
     } else {
       message.error('测试邮件发送失败')

@@ -77,7 +77,7 @@ export default ({ config, keyword, onData }) => {
         page.site = config.name || page.site
         page.list = page.list.map(d => ({ date: page.date || d.date || page.now, ...d, site: page.site }))
         setData(page)
-        onData(page)
+        onData(page, data)
       } else {
         console.log('error', res)
       }
