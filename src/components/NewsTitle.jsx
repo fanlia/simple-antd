@@ -54,7 +54,7 @@ const fetchData = (variables) => {
 
 }
 
-export default ({ config, keyword, onData }) => {
+export default ({ config, keyword, onData, proxy }) => {
 
   const [data, setData] = useState({
     title: '',
@@ -65,6 +65,16 @@ export default ({ config, keyword, onData }) => {
 
   const requestData = () => {
     if (!config) return
+
+    if (proxy) {
+      config = {
+        ...config,
+        page: {
+          url: config.page,
+          proxy,
+        }
+      }
+    }
 
     setLoading(true)
     fetchData(config)

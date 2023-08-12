@@ -15,8 +15,10 @@ export const testProxy = (proxy) => {
   `
 
   const variables = {
-    url: 'http://www.baidu.com',
-    proxy,
+    url: {
+      url: 'http://www.baidu.com',
+      proxy,
+    },
   }
 
   return fetch(url, {

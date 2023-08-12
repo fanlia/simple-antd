@@ -16,8 +16,10 @@ export default ({ configs }) => {
   const [keyword, setKeyword] = useState('')
   const [datas, setDatas] = useState([])
   const [alertEmail, setAlertEmail] = useState(false)
+  const [proxy, setProxy] = useState(null)
 
   const disableEmailOptions = !storage.get('mail-options')
+  const disableProxy = !storage.get('proxy')
 
   const handleSpan = (e) => {
     setSpan(+e.target.value)
@@ -86,6 +88,15 @@ export default ({ configs }) => {
     }
   }
 
+  const handleProxy = (isProxy) => {
+    if (isProxy) {
+      const proxy = storage.get('proxy', null)
+      setProxy(proxy)
+    } else {
+      setProxy(null)
+    }
+  }
+
   const onData = (data, oldData) => {
     if (alertEmail) {
       handleAlert(data, oldData)
@@ -104,10 +115,15 @@ export default ({ configs }) => {
       </Radio.Group>
       <Input addonBefore={<SearchOutlined />} allowClear placeholder="关键字" onChange={handleKeyword} />
       <Button onClick={handleDownload}>下载全部</Button>
-      <Switch checked={alertEmail} onChange={setAlertEmail} checkedChildren='关闭邮件通知' unCheckedChildren='开启邮件通知' disabled={disableEmailOptions} />
     </Space>
+    <div style={{marginTop: 16}}>
+      <Space>
+      <Switch checked={alertEmail} onChange={setAlertEmail} checkedChildren='关闭邮件通知' unCheckedChildren='开启邮件通知' disabled={disableEmailOptions} />
+      <Switch checked={!!proxy} onChange={handleProxy} checkedChildren='关闭代理' unCheckedChildren='开启代理' disabled={disableProxy} />
+      </Space>
+    </div>
     <Row gutter={[16, 16]}>
-      {configs.map((d, i) => <Col span={span} key={i}><NewsTitle config={d} keyword={keyword} onData={onData}/></Col>)}
+      {configs.map((d, i) => <Col span={span} key={i}><NewsTitle config={d} keyword={keyword} onData={onData} proxy={proxy}/></Col>)}
     </Row>
     </>
   )
