@@ -17,6 +17,8 @@ export default ({ configs }) => {
   const [datas, setDatas] = useState([])
   const [alertEmail, setAlertEmail] = useState(false)
 
+  const disableEmailOptions = !storage.get('mail-options')
+
   const handleSpan = (e) => {
     setSpan(+e.target.value)
   }
@@ -40,7 +42,7 @@ export default ({ configs }) => {
         return
       }
       const oldlistByUrl = oldData.list.reduce((m, d) => ({ ...m, [d.url]: true }), {})
-      const newDataList = data.list.filter(d => oldlistByUrl[d.url])
+      const newDataList = data.list.filter(d => !oldlistByUrl[d.url])
 
       if (newDataList.length === 0) {
         return
@@ -102,7 +104,7 @@ export default ({ configs }) => {
       </Radio.Group>
       <Input addonBefore={<SearchOutlined />} allowClear placeholder="关键字" onChange={handleKeyword} />
       <Button onClick={handleDownload}>下载全部</Button>
-      <Switch checked={alertEmail} onChange={setAlertEmail} checkedChildren='关闭邮件通知' unCheckedChildren='开启邮件通知' />
+      <Switch checked={alertEmail} onChange={setAlertEmail} checkedChildren='关闭邮件通知' unCheckedChildren='开启邮件通知' disabled={disableEmailOptions} />
     </Space>
     <Row gutter={[16, 16]}>
       {configs.map((d, i) => <Col span={span} key={i}><NewsTitle config={d} keyword={keyword} onData={onData}/></Col>)}
