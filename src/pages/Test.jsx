@@ -6,13 +6,15 @@ import { Button, message, Upload, Space, Table, Divider, Tag } from 'antd'
 import * as storage from '../services/storage'
 import * as xlsx from '../services/xlsx'
 
+import { SITES } from '../sites/demo'
+
 export default () => {
 
   const [sites, setSites] = useState([])
   const [file, setFile] = useState(null)
 
   useEffect(() => {
-    const data = storage.get('sites')
+    const data = storage.get('sites', SITES)
     if (data) {
       setSites(data)
     }

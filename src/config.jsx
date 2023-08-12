@@ -47,13 +47,13 @@ export const menu = {
       key: '/',
       label: '数据',
     },
-    // {
-    //   key: '/about',
-    //   label: 'About',
-    // },
     {
       key: '/test',
       label: '站点',
+    },
+    {
+      key: '/about',
+      label: '配置',
     },
   ],
 }

@@ -1,14 +1,12 @@
 
 import CryptoJS from 'crypto-js'
 
-import { SITES } from '../sites/newspaper'
-
 const sKEY = 'skey skey'
 
-export const get = (key) => {
+export const get = (key, defaultValue) => {
   let data = localStorage.getItem(key)
   if (!data) {
-    return SITES
+    return defaultValue
   }
   data = CryptoJS.AES.decrypt(data, sKEY).toString(CryptoJS.enc.Utf8)
   const sites = JSON.parse(data)

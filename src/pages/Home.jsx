@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom'
 import NewsTitleList from '../components/NewsTitleList'
 import * as storage from '../services/storage'
 
+import { SITES } from '../sites/demo'
+
 export default () => {
   const [sites, setSites] = useState([])
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    const data = storage.get('sites')
+    const data = storage.get('sites', SITES)
     if (data) {
       setSites(data.filter(d => !d.disabled))
     }
