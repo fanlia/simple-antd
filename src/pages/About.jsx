@@ -38,7 +38,7 @@ export default () => {
     if (res.send_mail) {
       message.success('测试邮件发送成功')
     } else {
-      message.danger('测试邮件发送失败')
+      message.error('测试邮件发送失败')
     }
   }
 
