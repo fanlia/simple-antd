@@ -6,7 +6,7 @@ import { Button, message, Upload, Space, Table, Divider, Tag } from 'antd'
 import * as storage from '../services/storage'
 import * as xlsx from '../services/xlsx'
 
-import { SITES } from '../sites/demo'
+import { SITES } from '../sites/index'
 
 export default () => {
 

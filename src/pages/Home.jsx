@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import NewsTitleList from '../components/NewsTitleList'
 import * as storage from '../services/storage'
 
-import { SITES } from '../sites/demo'
+import { SITES } from '../sites/index'
 
 export default () => {
   const [sites, setSites] = useState([])
