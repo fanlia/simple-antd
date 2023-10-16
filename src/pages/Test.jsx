@@ -67,7 +67,7 @@ export default () => {
   return (
     <div>
       <Space>
-        <Upload onChange={handleImport} beforeUpload={() => false}>
+        <Upload onChange={handleImport} beforeUpload={() => false} accept=".xlsx">
           <Button icon={<UploadOutlined />}>上传站点文件</Button>
         </Upload>
         <Button icon={<DownloadOutlined />} onClick={handleExport}>下载站点文件</Button>
